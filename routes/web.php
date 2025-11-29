@@ -8,16 +8,22 @@ use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
+
+
+class Order{
+
+    public $id;
+
+    public function __construct($id)
+    {
+        $this->id  = $id;
+    }
+}
+
 Route::get('/', function () {
 
-    //    $ch = curl_init("https://google.com");
-    //    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    //    curl_exec($ch);
-    //    dd(curl_error($ch));
 
-    // dd(openssl_get_cert_locations());
-    // OrderStatusUpdated::dispatch();
-    event(new OrderStatusUpdated('hi'));
+    event(new OrderStatusUpdated(new Order(5)));
 
     return view('welcome');
 })->name('home');

@@ -15,16 +15,19 @@ class OrderStatusUpdated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $title;
+    // public $title;
+    public $order;
+
     /**
      * Create a new event instance.
      */
-    public function __construct($title)
+    public function __construct($order)
     {
+        $this->order = $order;
+        Log::info("TestEvent fired:" . $this->order->id);
         //
-        $this->title = $title;
-
-         Log::info("TestEvent fired: " . $this->title);
+        // $this->title = $title;
+        // Log::info("TestEvent fired: " . $this->title);
     }
 
     /**
@@ -36,6 +39,7 @@ class OrderStatusUpdated implements ShouldBroadcast
     {
         // this is custom chanel bro & public chanel
         return [new Channel('order-status-updated')];
+
         //        return [
         //            new PrivateChannel('channel-name'),
         //        ];
