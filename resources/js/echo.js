@@ -17,8 +17,8 @@ window.Echo = new Echo({
 });
 
 
-window.Echo.channel('order-status-updated')
-    .listen('OrderStatusUpdated',e =>{
-        console.log('order has been updated behind the scenes' + '\n' + 'order id is : ' + e.order.id);
-        console.log(e)
-    })
+// window.Echo.channel('order-status-updated')
+//     .listen('OrderStatusUpdated',e =>{
+//         console.log('order has been updated behind the scenes' + '\n' + 'order id is : ' + e.order.id);
+//         console.log(e)
+//     })

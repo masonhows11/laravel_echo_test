@@ -28,7 +28,9 @@ Route::get('/', function () {
 
 Route::get('tasks',[TaskController::class,'index'])->name('tasks.index');
 
-Route::post('/add/task',[TaskController::class,'store'])->name('tasks.store');
+Route::get('/create',[TaskController::class,'create'])->name('create');
+
+Route::post('/store',[TaskController::class,'store'])->name('store');
 
 //Route::get('/update', function () {
 //    event(new OrderStatusUpdated(new Order(5)));

@@ -5,7 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <style>
+        {!! Vite::content('resources/css/app.css') !!}
+    </style>
+    <title>Tasks</title>
 </head>
 <body>
 <div>
@@ -29,22 +32,17 @@
         </tbody>
     </table>
 </div>
-<div>
-    <form action="{{ route('tasks.store') }}" method="post">
-        <div>
-            <label for="title">Title:</label><br>
-            <input type="text" id="title" name="title" value=""><br>
-        </div>
 
-        <div>
-            <label for="body">Body:</label><br>
-            <textarea id="body" name="body" cols="30" rows="10"></textarea>
-        </div>
-        <div>
-            <input type="submit" value="Submit">
-        </div>
-    </form>
-</div>
+<script>
+    {!! Vite::content('resources/js/app.js') !!}
+</script>
+<script type="text/javascript">
+    window.Echo.channel('taskCreated')
+        .listen('AddNewTaskEvent',e =>{
+            console.log('new task added successfully');
+            console.log(e)
+        })
 
+</script>
 </body>
 </html>

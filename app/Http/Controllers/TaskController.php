@@ -16,15 +16,19 @@ class TaskController extends Controller
         return view('tasks.tasks', ['tasks' => Task::all()]);
     }
 
+    public function create()
+    {
+        return view('tasks.create');
+    }
     public function store(Request $request)
     {
-
-
         $task = Task::create([
             'title' => $request->title,
             'body' => $request->body,
         ]);
 
         event(new AddNewTaskEvent($task));
+
+        return redirect('/tasks');
     }
 }
