@@ -9,24 +9,28 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
 
-
-class Order{
+class Order
+{
 
     public $id;
 
     public function __construct($id)
     {
-        $this->id  = $id;
+        $this->id = $id;
     }
 }
 
 Route::get('/', function () {
 
+    return view('welcome');
+
+})->name('home');
+
+Route::get('/update', function () {
 
     event(new OrderStatusUpdated(new Order(5)));
 
-    return view('welcome');
-})->name('home');
+});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
