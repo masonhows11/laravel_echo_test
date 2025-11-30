@@ -1,6 +1,7 @@
 <?php
 
-use App\Events\OrderStatusUpdated;
+// use App\Events\OrderStatusUpdated;
+use App\Http\Controllers\TaskController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -9,16 +10,14 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
 
-class Order
-{
-
-    public $id;
-
-    public function __construct($id)
-    {
-        $this->id = $id;
-    }
-}
+//class Order
+//{
+//    public $id;
+//    public function __construct($id)
+//    {
+//        $this->id = $id;
+//    }
+//}
 
 Route::get('/', function () {
 
@@ -26,11 +25,14 @@ Route::get('/', function () {
 
 })->name('home');
 
-Route::get('/update', function () {
 
-    event(new OrderStatusUpdated(new Order(5)));
+Route::get('tasks',[TaskController::class,'index'])->name('tasks.index');
 
-});
+Route::post('/add/task',[TaskController::class,'store'])->name('tasks.store');
+
+//Route::get('/update', function () {
+//    event(new OrderStatusUpdated(new Order(5)));
+//});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
