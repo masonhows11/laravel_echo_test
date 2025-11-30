@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AddNewTaskEvent;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -9,16 +10,21 @@ class TaskController extends Controller
 {
     //
 
-    public function index(){
+    public function index()
+    {
 
-        return  view('tasks.tasks',['tasks' => Task::all()]);
+        return view('tasks.tasks', ['tasks' => Task::all()]);
     }
 
-    public function create(){
+    public function store(Request $request)
+    {
 
-        \App\Models\Task::create([
-            'title' => request()->title,
-            'body' => request()->description,
+
+        $task = Task::create([
+            'title' => $request->title,
+            'body' => $request->body,
         ]);
+
+        event(new AddNewTaskEvent($task));
     }
 }
