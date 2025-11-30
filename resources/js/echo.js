@@ -9,13 +9,14 @@ window.Echo = new Echo({
     cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
     forceTLS: true,
 
-    // wsHost: import.meta.env.VITE_PUSHER_HOST,
-    // wsPort: import.meta.env.VITE_PUSHER_PORT,
-    // wssPort: import.meta.env.VITE_PUSHER_PORT,
-    //
-    // enabledTransports: ["ws", "wss"],
+
 });
 
+// wsHost: import.meta.env.VITE_PUSHER_HOST,
+// wsPort: import.meta.env.VITE_PUSHER_PORT,
+// wssPort: import.meta.env.VITE_PUSHER_PORT,
+//
+// enabledTransports: ["ws", "wss"],
 
 // window.Echo.channel('order-status-updated')
 //     .listen('OrderStatusUpdated',e =>{

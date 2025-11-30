@@ -36,9 +36,9 @@
 <script>
     {!! Vite::content('resources/js/app.js') !!}
 </script>
-<script type="text/javascript">
-    window.Echo.channel('taskCreated')
-        .listen('AddNewTaskEvent',e =>{
+<script>
+    window.Echo.channel('tasks')
+        .listen('.task.added', e => {
             console.log('new task added successfully');
             console.log(e)
         })

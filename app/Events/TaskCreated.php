@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class AddNewTaskEvent implements ShouldBroadcast
+class TaskCreated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -23,6 +23,12 @@ class AddNewTaskEvent implements ShouldBroadcast
         $this->task = $task;
     }
 
+    public function broadcastAs(): string
+    {
+        return 'task.added';
+    }
+
+
     /**
      * Get the channels the event should broadcast on.
      *
@@ -31,7 +37,7 @@ class AddNewTaskEvent implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new Channel('taskCreated')
+            new Channel('tasks')
             //  new PrivateChannel('channel-name'),
         ];
     }

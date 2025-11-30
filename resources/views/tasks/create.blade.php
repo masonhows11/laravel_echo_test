@@ -9,7 +9,7 @@
 </head>
 <body>
 <div>
-    <form action="{{ route('tasks.store') }}" method="post">
+    <form action="{{ route('store') }}" method="post">
         @csrf
         <div>
             <label for="title">Title:</label><br>
