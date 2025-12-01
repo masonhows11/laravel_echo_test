@@ -5,17 +5,16 @@ window.Pusher = Pusher;
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: '6ed98ea1af386bbba6da',
+    key: import.meta.env.VITE_PUSHER_APP_KEY,
     cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
     forceTLS: true,
     encrypted: true,
-
 });
 
 
 // نوشتن اسکریپت داخل فایلی که Echo لود میشه جواب میده
 // ولی نوشتن اسکریپت داخل  یک فایل دیگه خارج از این جوا ب
-// نمیده نمیدونم !!؟؟؟ 
+// نمیده نمیدونم !!؟؟؟
 // window.Echo.channel('tasks')
 //         .listen('.task.added', e => {
 //             console.log('new task added successfully');
