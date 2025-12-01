@@ -6,8 +6,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
-        {!! Vite::content('resources/css/app.css') !!}
+      
     </style>
+   
     <title>Tasks</title>
 </head>
 <body>
@@ -34,15 +35,16 @@
 </div>
 
 <script>
-    {!! Vite::content('resources/js/app.js') !!}
+   
 </script>
 <script>
-    window.Echo.channel('tasks')
-        .listen('.task.added', e => {
-            console.log('new task added successfully');
-            console.log(e)
-        })
+    // window.Echo.channel('tasks')
+    //     .listen('.task.added', e => {
+    //         console.log('new task added successfully');
+    //         console.log(e)
+    //     })
 
 </script>
+
 </body>
 </html>
