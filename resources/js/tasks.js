@@ -8,22 +8,40 @@ window.Echo.channel('tasks')
 
         // let response = JSON.stringify(e['task']);
         let response = e['task'];
-        let responseLength = Object.keys(e['task']).length;
-        //
-        let list = document.getElementById('task-list');
+
+        // let list = document.getElementById('task-list');
         let records = '';
-        //
+
+
         let tr = document.createElement('tr');
-        // console.log(response['id'],response['title'],response['body']);
+
+
+
         for (const item in response) {
-            records += '<td class="p-2" colspan="2">' + response['id'] + '</td>';
-            records += '<td class="p-2" colspan="2">' + response['title'] + '</td>';
-            records += '<td class="p-2" colspan="2">' + response['body'] + '</td>';
-            records += '<td class="p-2"><a href="#">edit</a></td>';
-            records += '<td class="p-2"><a href="#">delete</a></td>';
+            records += '<td class="p-2" colspan="2">' + response['id'] + '</td>' +
+                '<td class="p-2" colspan="2">' + response['title'] + '</td>' +
+                '<td class="p-2" colspan="2">' + response['body'] + '</td>' +
+                '<td class="p-2"><a href="#">edit</a></td>' +
+                '<td class="p-2"><a href="#">delete</a></td>';
         }
+
+
+        // records += '<tr class="p-2 my-2 text-center" id="task-list">'
+        // for (const item in response) {
+        //     records += '<td class="p-2" colspan="2">' + response['id'] + '</td>' +
+        //         '<td class="p-2" colspan="2">' + response['title'] + '</td>' +
+        //         '<td class="p-2" colspan="2">' + response['body'] + '</td>' +
+        //         '<td class="p-2"><a href="#">edit</a></td>' +
+        //         '<td class="p-2"><a href="#">delete</a></td>';
+        // }
+        // records += '</tr>';
+
+
         console.log(records);
-        //let node = list.appendChild(records);
-        //document.getElementById('table-list').append(node)
+        // console.log(row)
+        // document.getElementById('table-list').append(row)
+        // tr.append(records);
+        document.getElementById('table-list').append(records);
+
 
     })

@@ -22,8 +22,8 @@
             @foreach($tasks as $task)
                 <tr class="p-2 my-2 text-center" id="task-list">
                     <td class="p-2" colspan="2">{{ $task->id }}</td>
-                    <td class="p-2" colspan="2">{{ $task->title  }}</td>
-                    <td class="p-2" colspan="2">{{ $task->body  }}</td>
+                    <td class="p-2" colspan="2">{{ $task->title }}</td>
+                    <td class="p-2" colspan="2">{{ $task->body }}</td>
                     <td class="p-2"><a href="#">edit</a></td>
                     <td class="p-2"><a href="#">delete</a></td>
                 </tr>
