@@ -2,6 +2,7 @@ window.Echo.channel('tasks')
     .listen('.task.added', e => {
         console.log('new task added successfully');
         console.log(Object.keys(e['task']));
+        // Object.keys(e['task']) get keys of object from response
         let response = JSON.stringify(e['task']);
         let responseLength = response.length;
         let list = document.getElementById('task-list');
