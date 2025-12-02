@@ -30,8 +30,10 @@
             </tbody>
         </table>
     </div>
+    <div class="mx-auto flex justify-center mt-4">
+        <a class="text-2xl py-1 px-3 border-gray-300 border border-lg rounded-lg" href="{{ route('home') }}">Home</a>
+    </div>
 @endsection
-
 @section('scripts')
     @vite('resources/js/tasks.js')
 @endsection

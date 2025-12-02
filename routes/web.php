@@ -25,12 +25,15 @@ Route::get('/', function () {
 
 })->name('home');
 
+Route::group(['middleware' => ['web', 'auth']], function () {
 
-Route::get('tasks',[TaskController::class,'index'])->name('tasks.index');
+    Route::get('tasks',[TaskController::class,'index'])->name('tasks.index');
 
-Route::get('/create',[TaskController::class,'create'])->name('create');
+    Route::get('/create',[TaskController::class,'create'])->name('create');
 
-Route::post('/store',[TaskController::class,'store'])->name('store');
+    Route::post('/store',[TaskController::class,'store'])->name('store');
+});
+
 
 //Route::get('/update', function () {
 //    event(new OrderStatusUpdated(new Order(5)));
