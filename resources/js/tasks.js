@@ -3,6 +3,7 @@ window.Echo.channel('tasks')
         console.log('new task added successfully');
         console.log(Object.keys(e['task']));
         // Object.keys(e['task']) get keys of object from response
+        // JSON.stringify(e['task']); convert to json string
         let response = JSON.stringify(e['task']);
         let responseLength = response.length;
         let list = document.getElementById('task-list');
@@ -16,7 +17,7 @@ window.Echo.channel('tasks')
             records += '<td class="p-2"><a href="#">edit</a></td>';
             records += '<td class="p-2"><a href="#">delete</a></td>';
         }
-        console.log(response.keys);
+        console.log(response);
         //let node = list.appendChild(records);
         //document.getElementById('table-list').append(node)
 
