@@ -19,7 +19,7 @@
             </thead>
             <tbody class="">
             @foreach($tasks as $task)
-                <tr class="p-2 my-2 text-center">
+                <tr class="p-2 my-2 text-center" id="task-list">
                     <td class="p-2" colspan="2">{{ $task->id }}</td>
                     <td class="p-2" colspan="2">{{ $task->title  }}</td>
                     <td class="p-2" colspan="2">{{ $task->body  }}</td>
@@ -36,4 +36,7 @@
 @endsection
 @section('scripts')
     @vite('resources/js/tasks.js')
+    <script>
+
+    </script>
 @endsection
