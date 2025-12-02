@@ -3,7 +3,10 @@
     tasks
 @endsection
 @section('content')
-    <div>
+    <div class="mx-auto flex justify-center ">
+        <h1 class="text-3xl font-bold mt-4">Task list</h1>
+    </div>
+    <div class="mx-auto w-full flex justify-center mt-5">
         <table>
             <thead>
             <tr>
