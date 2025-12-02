@@ -6,29 +6,32 @@
     <div class="mx-auto flex justify-center ">
         <h1 class="text-3xl font-bold mt-4">Task list</h1>
     </div>
-    <div class="mx-auto w-full flex justify-center mt-5">
-        <table>
+    <div class="mx-auto w-full flex justify-center mt-5 ">
+        <table class="p-4 table-auto rounded rounded-lg border-separate border-spacing-2 border-collapse border  border-gray-400">
             <thead>
-            <tr>
-                <th>id</th>
-                <th>title</th>
-                <th>body</th>
+            <tr class="font-sans font-serif">
+                <th colspan="2" class="text-center">id</th>
+                <th colspan="2" class="text-center">title</th>
+                <th colspan="2" class="text-center">body</th>
+                <th colspan="1" class="text-center">edit</th>
+                <th colspan="1" class="text-center">delete</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody class="">
             @foreach($tasks as $task)
-                <tr>
-                    <td>{{ $task->id }}</td>
-                    <td>{{ $task->title  }}</td>
-                    <td>{{ $task->body  }}</td>
+                <tr class="p-2 my-2 text-center">
+                    <td class="p-2" colspan="2">{{ $task->id }}</td>
+                    <td class="p-2" colspan="2">{{ $task->title  }}</td>
+                    <td class="p-2" colspan="2">{{ $task->body  }}</td>
+                    <td class="p-2"><a href="#">edit</a></td>
+                    <td class="p-2"><a href="#">delete</a></td>
                 </tr>
             @endforeach
-
             </tbody>
         </table>
     </div>
 @endsection
 
 @section('scripts')
-   @vite('resources/js/tasks.js')
+    @vite('resources/js/tasks.js')
 @endsection
