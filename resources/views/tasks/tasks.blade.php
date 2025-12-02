@@ -17,7 +17,7 @@
                 <th colspan="1" class="text-center">delete</th>
             </tr>
             </thead>
-            <tbody class="">
+            <tbody class="" id="table-list">
             @foreach($tasks as $task)
                 <tr class="p-2 my-2 text-center" id="task-list">
                     <td class="p-2" colspan="2">{{ $task->id }}</td>
