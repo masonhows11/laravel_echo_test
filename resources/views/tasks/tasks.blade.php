@@ -7,7 +7,8 @@
         <h1 class="text-3xl font-bold mt-4">Task list</h1>
     </div>
     <div class="mx-auto w-full flex justify-center mt-5 ">
-        <table class="p-4 table-auto rounded rounded-lg border-separate border-spacing-2 border-collapse border  border-gray-400">
+        <table
+            class="p-4 table-auto rounded rounded-lg border-separate border-spacing-2 border-collapse border  border-gray-400">
             <thead>
             <tr class="font-sans font-serif">
                 <th colspan="2" class="text-center">id</th>
