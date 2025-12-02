@@ -2,9 +2,9 @@
 
 namespace App\Events;
 
-use Illuminate\Broadcasting\Channel;
+// use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
+// use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -15,6 +15,7 @@ class TaskCreated implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $task;
+
     /**
      * Create a new event instance.
      */
@@ -32,13 +33,16 @@ class TaskCreated implements ShouldBroadcast
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return array<int, Channel>
+     * @return array<int>
      */
     public function broadcastOn(): array
     {
         return [
-            new Channel('tasks')
-            //  new PrivateChannel('channel-name'),
+            // this is public channel
+            // new Channel('tasks')
+
+            // this is private channel
+            new PrivateChannel('tasks'.$this->task->id),
         ];
     }
 }

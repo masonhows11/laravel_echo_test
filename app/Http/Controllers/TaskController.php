@@ -29,7 +29,7 @@ class TaskController extends Controller
 
         event(new TaskCreated($task));
 
-        return redirect()->back();
-        // return redirect('/tasks');
+        // return redirect()->back();
+        return redirect('/tasks');
     }
 }
