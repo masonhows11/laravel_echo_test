@@ -14,6 +14,7 @@ Broadcast::channel('tasks.{id}', function ($user, $id) {
 // otherwise error
 Broadcast::channel('chat.{roomId}',function($user,$roomId){
 
-    return $user->rooms->where('id',$roomId)->exists();
+   return $user->rooms()->where('rooms.id',$roomId)->exists();
+   // return $user->rooms->contains($user->id,$roomId);
 
 });

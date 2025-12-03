@@ -12,7 +12,7 @@
             @csrf
             <div>
                 <label for="title">Title:</label><br>
-                <input class="border rounded-lg w-full" type="text" id="title" onkeydown="typingWisper(event)"
+                <input class="border rounded-lg w-full" type="text" id="title" onkeydown="typingWhisper(event)"
                     name="title" value=""><br>
             </div>
 
@@ -29,9 +29,17 @@
 
 @section('scripts')
     {{-- <script>
-        function typingWisper(event) {
-            console.log(event.target.value);
+        let roomId = document.getElementById('room');
 
+        function typingWisper(event) {
+
+            let typing = event.target.value;
+
+            window.Echo.private(`chat.${roomId}`).whisper("typing", {
+
+                name: 'foobar'
+
+            });
         }
     </script> --}}
 @endsection

@@ -21,6 +21,9 @@ class TaskController extends Controller
         $user = Auth::user();
         $room = $user->rooms->first();
         $roomId = $room->id ?? null;
+
+        //var_dump($user->rooms->contains($user->id,$roomId));
+
         return view('tasks.create',['roomId' => $roomId]);
     }
 
