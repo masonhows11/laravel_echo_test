@@ -46,7 +46,7 @@ class TaskCreated implements ShouldBroadcast
             // new Channel('tasks')
 
             // this is private channel
-            new PrivateChannel('tasks'.$this->user->id),
+            new PrivateChannel('tasks.'.$this->user->id),
         ];
     }
 }

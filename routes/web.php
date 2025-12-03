@@ -32,6 +32,11 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/create',[TaskController::class,'create'])->name('create');
 
     Route::post('/store',[TaskController::class,'store'])->name('store');
+
+    Route::get('/delete/{id}',function (\Illuminate\Http\Request $request){
+        \App\Models\Task::destroy($request->id);
+        return redirect()->back();
+    })->name('delete');
 });
 
 

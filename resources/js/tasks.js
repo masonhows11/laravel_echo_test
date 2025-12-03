@@ -24,7 +24,7 @@
 
 //// this for private channel
 
-let user_id = '';
+let user_id = document.getElementById('user').value;
 window.Echo.private(`tasks.${user_id}`).listen(".task.added", (e) => {
     console.log("new task added successfully");
     // Object.keys(e['task']) get keys of object from response

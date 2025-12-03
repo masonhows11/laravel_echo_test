@@ -25,14 +25,14 @@
                     <td class="p-2" colspan="2">{{ $task->title }}</td>
                     <td class="p-2" colspan="2">{{ $task->body }}</td>
                     <td class="p-2"><a href="#">edit</a></td>
-                    <td class="p-2"><a href="#">delete</a></td>
+                    <td class="p-2"><a href="{{ route('delete',$task->id) }}">delete</a></td>
                 </tr>
             @endforeach
             </tbody>
         </table>
     </div>
     <div class="mx-auto flex justify-center mt-4">
-        <a class="text-2xl py-1 px-3 border-gray-300 border border-lg rounded-lg" 
+        <a class="text-2xl py-1 px-3 border-gray-300 border border-lg rounded-lg"
         href="{{ route('home') }}">Home</a>
     </div>
 @endsection
