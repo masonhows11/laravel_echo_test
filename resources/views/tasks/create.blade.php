@@ -13,7 +13,7 @@
             <div>
                 <label for="title">Title:</label><br>
                 <input class="border rounded-lg w-full" type="text" id="title" onkeydown="typingWhisper(event)"
-                    name="title" value=""><br>
+                       name="title" value=""><br>
             </div>
 
             <div>
@@ -26,20 +26,7 @@
         </form>
     </div>
 @endsection
-
 @section('scripts')
-    {{-- <script>
-        let roomId = document.getElementById('room');
-
-        function typingWisper(event) {
-
-            let typing = event.target.value;
-
-            window.Echo.private(`chat.${roomId}`).whisper("typing", {
-
-                name: 'foobar'
-
-            });
-        }
-    </script> --}}
+    @vite('resources/js/tasks.js')
 @endsection
+

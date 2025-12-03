@@ -38,7 +38,4 @@
 @endsection
 @section('scripts')
     @vite('resources/js/tasks.js')
-    <script>
-
-    </script>
 @endsection
