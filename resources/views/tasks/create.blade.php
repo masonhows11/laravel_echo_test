@@ -10,8 +10,9 @@
         <form class="w-96" action="{{ route('store') }}" method="post">
             @csrf
             <div>
-                <label  for="title">Title:</label><br>
-                <input class="border rounded-lg w-full" type="text" id="title" name="title" value=""><br>
+                <label for="title">Title:</label><br>
+                <input class="border rounded-lg w-full" type="text" id="title" onkeydown="typingWisper(event)"
+                    name="title" value=""><br>
             </div>
 
             <div>
@@ -26,6 +27,10 @@
 @endsection
 
 @section('scripts')
+    {{-- <script>
+        function typingWisper(event) {
+            console.log(event.target.value);
 
+        }
+    </script> --}}
 @endsection
-
