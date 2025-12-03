@@ -3,6 +3,8 @@
 namespace App\Events;
 
 // use Illuminate\Broadcasting\Channel;
+
+use App\Models\User;
 use Illuminate\Broadcasting\InteractsWithSockets;
 // use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -15,13 +17,15 @@ class TaskCreated implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $task;
+    private $user;
 
     /**
      * Create a new event instance.
      */
-    public function __construct($task)
+    public function __construct($task,User $user)
     {
         $this->task = $task;
+        $this->user = $user;
     }
 
     public function broadcastAs(): string
@@ -42,7 +46,7 @@ class TaskCreated implements ShouldBroadcast
             // new Channel('tasks')
 
             // this is private channel
-            new PrivateChannel('tasks'.$this->task->id),
+            new PrivateChannel('tasks'.$this->user->id),
         ];
     }
 }

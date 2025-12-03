@@ -6,7 +6,7 @@
     <div class="mx-auto flex justify-center ">
         <h1 class="text-3xl font-bold mt-4">Task list</h1>
     </div>
-    <div class="mx-auto w-full flex justify-center mt-5 ">
+    <div class="mx-auto w-full flex justify-center mt-5">
         <table
             class="p-4 table-auto rounded rounded-lg border-separate border-spacing-2 border-collapse border  border-gray-400">
             <thead>
@@ -32,7 +32,8 @@
         </table>
     </div>
     <div class="mx-auto flex justify-center mt-4">
-        <a class="text-2xl py-1 px-3 border-gray-300 border border-lg rounded-lg" href="{{ route('home') }}">Home</a>
+        <a class="text-2xl py-1 px-3 border-gray-300 border border-lg rounded-lg" 
+        href="{{ route('home') }}">Home</a>
     </div>
 @endsection
 @section('scripts')
