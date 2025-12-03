@@ -25,7 +25,6 @@
 //// this for private channel manage by user_id
 let user_id = document.getElementById("user").value;
 window.Echo.private(`tasks.${user_id}`).listen(".task.added", (e) => {
-    console.log("new task added successfully");
     let response = e["task"];
     let records = "";
     records =
@@ -44,16 +43,27 @@ window.Echo.private(`tasks.${user_id}`).listen(".task.added", (e) => {
         "<tr/>";
     // this is very important very_very important
     document.getElementById("table-list").innerHTML += records;
-});
+})
 
 
 // whisper means other user listen to one channel and sea typing event
-window.typingWhisper = function(event) {
+let roomId = document.getElementById("room").value;
+let chatChannel = window.Echo.private(`chat.${roomId}`);
+// listen for response user typing
+chatChannel.listenForWhisper('typing', (e) => {
+    console.log('user typing:', e);
+})
 
-    let roomId = document.getElementById("room").value;
+// listen for user typing
+window.typingWhisper = function (event) {
+    //
     let typing = event.target.value;
-
-    window.Echo.private(`chat.${roomId}`).whisper("typing", {
+    //
+    chatChannel.whisper("typing", {
         name: typing,
+    }).listenForWhisper('typing', (e) => {
+        // listenForWhisper -> is listen for whisper from pusher
+        // to other users or peers
+        console.log(e);
     });
 }
