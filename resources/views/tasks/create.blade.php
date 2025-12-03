@@ -12,8 +12,11 @@
             @csrf
             <div>
                 <label for="title">Title:</label><br>
-                <input class="border rounded-lg w-full" type="text" id="title" onkeydown="typingWhisper(event)"
+                <input class="border rounded-lg w-full"
+                       type="text" id="title"
+                       onkeydown="typingWhisper(event)"
                        name="title" value=""><br>
+                <span></span>
             </div>
 
             <div>

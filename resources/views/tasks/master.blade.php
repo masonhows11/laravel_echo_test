@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
       @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script>
+        window.App = <?= auth()->user() ?>
+    </script>
 </head>
 <body class="flex p-6 lg:p-8 items-center
       lg:justify-center min-h-screen flex-col">
