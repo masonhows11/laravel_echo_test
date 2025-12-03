@@ -16,7 +16,7 @@
                        type="text" id="title"
                        onkeydown="typingWhisper(event)"
                        name="title" value=""><br>
-                <span></span>
+                <span id="isTyping"></span>
             </div>
 
             <div>
