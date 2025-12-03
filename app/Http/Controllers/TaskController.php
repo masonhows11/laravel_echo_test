@@ -18,7 +18,10 @@ class TaskController extends Controller
 
     public function create()
     {
-        return view('tasks.create');
+        $user = Auth::user();
+        $room = $user->rooms->first();
+        $roomId = $room->id ?? null;
+        return view('tasks.create',['roomId' => $roomId]);
     }
 
     public function store(Request $request)

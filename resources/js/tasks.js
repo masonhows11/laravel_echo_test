@@ -53,11 +53,12 @@
 // });
 
 // wisper means other user listen to one channel and sea typing event
+ let roomId = document.getElementById('room');
 function typingWisper(event) {
-    
-    let typing = event.target.value;
 
-    window.Echo.private(`tasks.${user_id}`).wisper("typing",{
+    let typing = event.target.value;
+   
+    window.Echo.private(`chat.${roomId}`).wisper("typing",{
 
         name :'foobar'
 

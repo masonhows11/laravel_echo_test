@@ -6,6 +6,7 @@
     <div class="mx-auto flex justify-center">
         <h1 class="text-3xl font-bold mt-4">New Task</h1>
     </div>
+    <input type="hidden" id="room" value="{{ $roomId }}">
     <div class="w-full mx-auto flex justify-center">
         <form class="w-96" action="{{ route('store') }}" method="post">
             @csrf
