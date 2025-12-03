@@ -49,16 +49,15 @@ window.Echo.private(`tasks.${user_id}`).listen(".task.added", (e) => {
 // whisper means other user listen to one channel and sea typing event
 let roomId = document.getElementById("room").value;
 let chatChannel = window.Echo.private(`chat.${roomId}`);
-// listen for response user typing
+
+
+//// listen for response user typing
 chatChannel.listenForWhisper('typing', (e) => {
     console.log('user typing:', e);
 })
-
-// listen for user typing
+//// listen for user typing
 window.typingWhisper = function (event) {
-    //
     let typing = event.target.value;
-    //
     chatChannel.whisper("typing", {
         name: typing,
     }).listenForWhisper('typing', (e) => {
