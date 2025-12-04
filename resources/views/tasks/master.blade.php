@@ -7,7 +7,7 @@
     <title>@yield('title')</title>
       @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script>
-        window.App = <?=  json_encode(auth()->user()) ?>
+        window.current_user_name = @json(auth()->user()->name)
     </script>
 </head>
 <body class="flex p-6 lg:p-8 items-center

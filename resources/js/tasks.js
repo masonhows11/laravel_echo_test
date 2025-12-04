@@ -49,7 +49,7 @@ window.Echo.private(`tasks.${user_id}`).listen(".task.added", (e) => {
 // whisper means other user listen to one channel and sea typing event
 let roomId = document.getElementById("room").value;
 let chatChannel = window.Echo.private(`chat.${roomId}`);
-let user_name = window.App.name;
+let current_name = window.current_user_name;
 let typing = true
 let typingTimers = {}
 let isTyping = document.getElementById('isTyping');
@@ -58,30 +58,25 @@ let isTyping = document.getElementById('isTyping');
 //// other user/user listen for whisper send from specific user/users
 chatChannel.listenForWhisper('typing', (e) => {
 
-    user_name = e.user_name;
+    let other_name = e.user_name;
     // first step
-    isTyping.innerHTML = `${user_name} is typing... `;
+    isTyping.innerHTML = `${other_name} is typing... `;
     // second step
-    if(typingTimers[user_name]){
-        clearTimeout(typingTimers[user_name])
+    if (typingTimers[other_name]) {
+        clearTimeout(typingTimers[other_name])
     }
     // third step
-    typingTimers[user_name] = setTimeout(()=>{
-        isTyping.innerHTML ='';
-        delete typingTimers[user_name]
-    },2000);
+    typingTimers[other_name] = setTimeout(() => {
+        isTyping.innerHTML = '';
+        delete typingTimers[other_name]
+    }, 2000);
 
 })
 
-function clearTyping(e) {
-    isTyping.innerHTML = '';
-}
-
 //// listen for user typing
 window.typingWhisper = function (event) {
-    let typing = event.target.value;
     //// this code send data with whisper to other user/users
     chatChannel.whisper("typing", {
-        user_name: user_name,
+        user_name: current_name,
     })
 }
