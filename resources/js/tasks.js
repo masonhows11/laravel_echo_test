@@ -49,7 +49,7 @@ window.Echo.private(`tasks.${user_id}`).listen(".task.added", (e) => {
 // whisper means other user listen to one channel and sea typing event
 let roomId = document.getElementById("room").value;
 let chatChannel = window.Echo.private(`chat.${roomId}`);
-
+let user_name = window.App.name;
 
 //// listen for response user typing
 chatChannel.listenForWhisper('typing', (e) => {
@@ -58,11 +58,15 @@ chatChannel.listenForWhisper('typing', (e) => {
 //// listen for user typing
 window.typingWhisper = function (event) {
     let typing = event.target.value;
+    //// this code send data with whisper to other user / users
     chatChannel.whisper("typing", {
-        name: typing,
+        data : typing,
+        user_name : user_name,
+    //// this code user / user get data from whisper
     }).listenForWhisper('typing', (e) => {
         // listenForWhisper -> is listen for whisper from pusher
         // to other users or peers
+        console.log(user)
         console.log(e);
     });
 }
