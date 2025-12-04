@@ -50,23 +50,23 @@ window.Echo.private(`tasks.${user_id}`).listen(".task.added", (e) => {
 let roomId = document.getElementById("room").value;
 let chatChannel = window.Echo.private(`chat.${roomId}`);
 let user_name = window.App.name;
-
+let typing = true
+let typingTimers = {}
+let isTyping = document.getElementById('isTyping');
 //// listen for response user typing
 chatChannel.listenForWhisper('typing', (e) => {
-    console.log('user typing:', e);
+    isTyping.innerHTML = `${user_name} is typing... `;
 })
 //// listen for user typing
 window.typingWhisper = function (event) {
     let typing = event.target.value;
     //// this code send data with whisper to other user / users
     chatChannel.whisper("typing", {
-        data : typing,
-        user_name : user_name,
-    //// this code user / user get data from whisper
+        data: typing,
+        user_name: user_name,
+        //// this code user / user get data from whisper
     }).listenForWhisper('typing', (e) => {
         // listenForWhisper -> is listen for whisper from pusher
         // to other users or peers
-        console.log(user)
-        console.log(e);
     });
 }
