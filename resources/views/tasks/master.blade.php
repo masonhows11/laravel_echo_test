@@ -5,59 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-      @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script>
         window.current_user_name = @json(auth()->user()->name)
     </script>
 </head>
-<body class="flex p-6 lg:p-8 items-center
-      lg:justify-center min-h-screen flex-col">
-<header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
-    @if (Route::has('login'))
-        <nav class="flex items-center justify-center gap-4">
+<body class="flex   min-h-screen flex-col">
+
+<nav class="flex flex-wrap items-center justify-between p-3 bg-teal-200/20">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+    </svg>
+
+    <div class="flex md:hidden">
+        <button id="hamburger">
+            <img class="toggle block" src="https://img.icons8.com/fluent-systems-regular/2x/menu-squared-2.png"
+                 width="48" height="48"/>
+            <img class="toggle hidden" src="https://img.icons8.com/fluent-systems-regular/2x/close-window.png"
+                 width="48" height="48"/>
+        </button>
+    </div>
+    <div
+        class="toggle hidden w-full md:w-auto md:flex text-right text-bold mt-5 md:mt-0 border-t-2 border-teal-900 md:border-none">
+        @if (Route::has('login'))
             @auth
                 <input type="hidden" id="user" value="{{ \Illuminate\Support\Facades\Auth::id() }}">
-                <a
-                    href="{{ url('/dashboard') }}"
-                    class="inline-block px-5 py-1.5  border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                >
+                <a href="{{ route('home') }}"
+                   class="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none">
+                    Home
+                </a>
+                <a href="{{ url('/dashboard') }}"
+                   class="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none">
                     Dashboard
-                <span>
-                   - {{ \Illuminate\Support\Facades\Auth::user()->name  }}
-                </span>
                 </a>
-                <a
-                    href="{{ url('/tasks') }}"
-                    class="inline-block px-5 py-1.5  border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                >
-                    Tasks
+                <a href="{{url('/tasks')}}"
+                   class="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none">Tasks
                 </a>
-                <a
-                    href="{{ url('/create') }}"
-                    class="inline-block px-5 py-1.5  border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                >
-                    Create
+                <a href="{{ url('/create')  }}"
+                   class="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none">Create
                 </a>
             @else
-                <a
-                    href="{{ route('login') }}"
-                    class="inline-block px-5 py-1.5   border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-                >
-                    Log in
+                <a href="{{ route('login')  }}"
+                   class="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none">Login
                 </a>
-
                 @if (Route::has('register'))
-                    <a
-                        href="{{ route('register') }}"
-                        class="inline-block px-5 py-1.5  border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                        Register
+                    <a href="{{ route('register')  }}"
+                       class="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none">Contact
                     </a>
                 @endif
             @endauth
-        </nav>
-    @endif
-</header>
-    @yield('content')
-    @yield('scripts')
+        @endif
+    </div>
+    <a href="#"
+       class="toggle hidden md:flex w-full md:w-auto px-4 py-2 text-right bg-teal-900 hover:bg-teal-500 text-white md:rounded">Create
+        Account
+    </a>
+</nav>
+@yield('content')
+@yield('scripts')
+<script>
+    document.getElementById("hamburger").onclick = function toggleMenu() {
+        const navToggle = document.getElementsByClassName("toggle");
+        for (let i = 0; i < navToggle.length; i++) {
+            navToggle.item(i).classList.toggle("hidden");
+        }
+    };
+</script>
 </body>
 </html>
