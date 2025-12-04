@@ -54,19 +54,16 @@ let typing = true
 let typingTimers = {}
 let isTyping = document.getElementById('isTyping');
 //// listen for response user typing
+
+//// other user/user listen for whisper send from specific user/users
 chatChannel.listenForWhisper('typing', (e) => {
-    isTyping.innerHTML = `${user_name} is typing... `;
+    isTyping.innerHTML = `${e.user_name} is typing... `;
 })
 //// listen for user typing
 window.typingWhisper = function (event) {
     let typing = event.target.value;
-    //// this code send data with whisper to other user / users
+    //// this code send data with whisper to other user/users
     chatChannel.whisper("typing", {
-        data: typing,
         user_name: user_name,
-        //// this code user / user get data from whisper
-    }).listenForWhisper('typing', (e) => {
-        // listenForWhisper -> is listen for whisper from pusher
-        // to other users or peers
-    });
+    })
 }
