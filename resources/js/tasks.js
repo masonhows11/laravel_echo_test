@@ -58,10 +58,19 @@ let isTyping = document.getElementById('isTyping');
 //// other user/user listen for whisper send from specific user/users
 chatChannel.listenForWhisper('typing', (e) => {
 
+    user_name = e.user_name;
     // first step
-    isTyping.innerHTML = `${e.user_name} is typing... `;
+    isTyping.innerHTML = `${user_name} is typing... `;
     // second step
-    const showTyping = setTimeout(clearTyping, 2000)
+    if(typingTimers[user_name]){
+        clearTimeout(typingTimers[user_name])
+    }
+    // third step
+    typingTimers[user_name] = setTimeout(()=>{
+        isTyping.innerHTML ='';
+        delete typingTimers[user_name]
+    },2000);
+
 })
 
 function clearTyping(e) {
