@@ -30,6 +30,6 @@
     </div>
 @endsection
 @section('scripts')
-    @vite('resources/js/tasks.js')
+    @vite('resources/js/chat.js')
 @endsection
 
